@@ -23,8 +23,7 @@ jobs:
         name: AB_Docs
         path: docs/_build/pdf/*.pdf
 
-
- make_instructions:
+  make_instructions:
     runs-on: ubuntu-latest
     name: Instruction Builder
     steps:
