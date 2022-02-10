@@ -1,0 +1,28 @@
+# Ignore build dirs and build artifacts
+*.*~
+_build
+*.pdf
+
+# Ignore special artifacts
+version.h
+
+# Ignore IDE
+.vscode
+
+# Ignore cache and temp files
+__pycache__
+Pipfile*
+
+# Ignore data files
+*.csv
+
+# Backup/temp
+*.FCStd1
+*.*-bak
+
+# Compiled artifacts
+*.stl
+*.pdf
+
+# Ignore file locks
+*.*#
