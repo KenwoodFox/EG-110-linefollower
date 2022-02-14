@@ -1,9 +1,9 @@
-name: Submit Release
-
-on:
+name: Style, Build and Docs
+on: 
   push:
-    tags:
-      - '*'
+    branches:    
+     - 'main'
+  pull_request:
 
 jobs:
   make_docs:
@@ -14,15 +14,15 @@ jobs:
       with:
         fetch-depth: 0
 
-    - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename
+    - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
 
     - run: cd docs && make
 
     - uses: actions/upload-artifact@v2
       with:
-        name: AB_Docs
+        name: Team_AB_Docs
         path: docs/_build/pdf/*.pdf
-
+  
   make_instructions:
     runs-on: ubuntu-latest
     name: Instruction Builder
@@ -51,7 +51,6 @@ jobs:
         name: MDS_Instruction_Manual
         path: docs/_build/latex/MDS_Operator_Manual.pdf
 
-
   make_bin:
     runs-on: ubuntu-latest
     name: Binary Builder
@@ -62,11 +61,23 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: AB_Arduino_Binaries
+        name: Team_Gold_Arduino_Binaries
         path: arduino/mds/_build/arduino.avr.mega/*
+  
+  make_lint:
+    runs-on: ubuntu-latest
+    name: c++ Delinter
+    steps:
+    - uses: actions/checkout@v2
 
+    - run: touch arduino/mds/README.md
+    - run: touch arduino/mds/COPYING
+
+    - run: cd arduino/mds && make lint
 
   publish_docs:
+    # Only publish on tags
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     name: Create Brightspace Submission
     needs: [make_docs, make_bin, make_instructions]
