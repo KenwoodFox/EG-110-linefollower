@@ -15,7 +15,7 @@ theme: Madrid
 navigation: frame
 date: "Build Date: &date"
 aspectratio: 1610
-logo: ../../resources/TeamLogo.png
+logo: resources/TeamLogo.png
 fontsize: 8pt
 ---
 
