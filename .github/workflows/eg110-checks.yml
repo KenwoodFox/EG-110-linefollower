@@ -22,7 +22,7 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: Team_AB_Docs
+        name: AB_Docs
         path: docs/_build/pdf/*.pdf
   
   make_instructions:
@@ -91,12 +91,12 @@ jobs:
 
     - uses: actions/download-artifact@v2
       with:
-        name: AB_Arduino_Binaries
+        name: AB-Transport_Arduino_Binaries
         path: arduino_bin
   
     - uses: actions/download-artifact@v2
       with:
-        name: mds_Instruction_Manual
+        name: MDS_Instruction_Manual
 
     - uses: papeloto/action-zip@v1
       with:
