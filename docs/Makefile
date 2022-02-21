@@ -35,7 +35,7 @@ generate_pres:
 	find $(builddir)/temp -type f -name '*.md' -execdir sed -i "s/&date/$(builddate)/" {} \;
 
 	# Convert all presentations to pdf
-	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -V colortheme:crane -o $(builddir)/pdf/{}.pdf \;
+	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -V colortheme:orchid -o $(builddir)/pdf/{}.pdf \;
 
 clean_filenames:
 	# Clean presentaiton names 

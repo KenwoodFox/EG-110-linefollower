@@ -7,7 +7,6 @@ author:
  - Joe
  - Aiden
  - James
- - Lukas (?)
 institute:
  - SNHU/CETA, EG-110
 titlegraphic: ../../resources/TeamLogo.png
