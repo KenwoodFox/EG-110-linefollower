@@ -1,4 +1,4 @@
-EG-207
+EG-110
 ======
 [![Style, Build and Docs](https://github.com/KenwoodFox/EG-110/actions/workflows/eg110-checks.yml/badge.svg)](https://github.com/KenwoodFox/EG-110/actions/workflows/eg110-checks.yml)
 [![Documentation Status](https://readthedocs.org/projects/EG-110/badge/?version=latest)](https://EG-110.readthedocs.io/en/latest/?badge=latest)
