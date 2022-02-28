@@ -5,7 +5,7 @@ subtitle:
  - Version &hash
 author:
  - Joe
- - Aiden
+ - Alex
  - James
 institute:
  - SNHU/CETA, EG-110
@@ -32,8 +32,8 @@ fontsize: 8pt
 
 :::: {.column width=20%}
 
-![](resources/team_members/aiden.jpg){ width=90 }  
-Aiden
+![](resources/team_members/alex.jpg){ width=90 }  
+Alex
 
 ::::
 
