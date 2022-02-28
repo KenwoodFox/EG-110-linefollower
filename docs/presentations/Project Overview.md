@@ -19,15 +19,16 @@ logo: resources/TeamLogo.png
 fontsize: 8pt
 ---
 
+# Introduction
 
-# Audience and Purpose
+## Audience and Purpose
 
-## Audience Characteristics
+### Audience Characteristics
 
  - Degree of knowledge of topic
 
 
-# Team Members
+## Meet the A-B Transport Team!
 
 ::: columns
 
@@ -60,3 +61,85 @@ Aiden
 ::::
 
 :::
+
+# Outline
+
+## Project Statement
+
+ - How can we successfully create a reliable shipping and transport solution that can be relied on by martians?
+
+## Key Design Requirements
+
+### Functional
+ - Transport as much as possible
+ - Be as efficient as possible
+ - Prioritize speed and reliability
+ - Prioritize autonomy
+
+### Physical Requirements
+
+Todo
+
+### Performance Requirements
+
+Todo
+
+## Concepts and Selection
+
+::: columns
+
+:::: {.column}
+
+### Concept 1
+
+Todo
+
+::::
+
+:::: {.column}
+
+### Concept 2
+
+Todo
+
+::::
+
+:::
+
+
+# Fabrication
+
+## Fabrication Summary
+
+ - Parts made/purchased etc
+ - Pictures!
+
+
+# Conclusion
+
+## Final Prototype
+
+Todo
+
+## Lessons Learned
+
+Todo
+
+
+# Questions
+
+## Questions?
+
+ - WHAT?
+ - WHY
+ - WHO
+ - WHEN
+ - WHERE
+
+
+# Backup Slides
+
+## Backup slides like this one
+
+Beep beep
+(Get it? im backing up)
