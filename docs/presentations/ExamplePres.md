@@ -10,7 +10,7 @@ author:
 institute:
  - SNHU/CETA, EG-110
 titlegraphic: ../../resources/TeamLogo.png
-theme: Madrid
+theme: Berlin
 navigation: frame
 date: "Build Date: &date"
 aspectratio: 1610
