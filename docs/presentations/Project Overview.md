@@ -7,6 +7,7 @@ author:
  - Joe
  - Alex
  - James
+ - Aiden
 institute:
  - SNHU/CETA, EG-110
 titlegraphic: ../../resources/TeamLogo.png
@@ -48,6 +49,13 @@ James
 
 ![](resources/team_members/joe.jpg){ width=90 }  
 Joe
+
+::::
+
+:::: {.column width=20%}
+
+![](resources/team_members/aiden.jpg){ width=90 }  
+Aiden
 
 ::::
 
