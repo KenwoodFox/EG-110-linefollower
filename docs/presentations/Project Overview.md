@@ -14,7 +14,7 @@ titlegraphic: ../../resources/TeamLogo.png
 theme: Berlin
 navigation: frame
 date: "Build Date: &date"
-aspectratio: 1610
+aspectratio: 169
 logo: resources/TeamLogo.png
 fontsize: 8pt
 ---
