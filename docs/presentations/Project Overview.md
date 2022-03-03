@@ -25,7 +25,14 @@ fontsize: 8pt
 
 ### Audience Characteristics
 
- - Degree of knowledge of topic
+ - Degree of knowledge of topic?
+ - Learning Styles?
+
+### Purpose
+
+ - Explain the design problem
+ - Design goals
+ - Concepts we're considering
 
 
 ## Meet the A-B Transport Team!
@@ -66,6 +73,8 @@ Aiden
 
 ## Project Statement
 
+### Project Statement
+
  - How can we successfully create a reliable shipping and transport solution that can be relied on by martians?
 
 ## Key Design Requirements
@@ -90,9 +99,9 @@ Todo
 
 :::: {.column}
 
-### Concept 1
+### Mono-chassis
 
-Todo
+![](resources/MonoChassis.png)
 
 ::::
 
@@ -111,8 +120,18 @@ Todo
 
 ## Fabrication Summary
 
- - Parts made/purchased etc
- - Pictures!
+ - We collected COTS robot parts from scrap/old robots.
+ - We 3D printed components
+ - We machined brackets and misc parts
+ - We combined motors and COTS gearbox components into larger components
+
+## 3D Printing
+
+### 3D Printing the Chassis
+
+![](resources/3DPrinting.png){ height=50% }
+
+Us 3D printing our chassis
 
 
 # Conclusion
