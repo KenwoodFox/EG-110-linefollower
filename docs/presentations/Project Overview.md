@@ -25,8 +25,9 @@ fontsize: 8pt
 
 ### Audience Characteristics
 
- - Degree of knowledge of topic?
- - Learning Styles?
+ - Non-technical people
+ - Average martians doing average jobs
+ - Might know a little about the basics but not about the advanced features (huskylens)
 
 ### Purpose
 
