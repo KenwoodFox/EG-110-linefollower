@@ -26,3 +26,6 @@ Pipfile*
 
 # Ignore file locks
 *.*#
+
+# Platform IO
+.pio

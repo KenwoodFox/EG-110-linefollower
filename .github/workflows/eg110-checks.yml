@@ -8,6 +8,65 @@ on:
   pull_request:
 
 jobs:
+  make_firmware:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Cache PlatformIO
+      uses: actions/cache@v2
+      with:
+        path: ~/.platformio
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+    - name: Set up Python
+      uses: actions/setup-python@v2
+    - name: Install PlatformIO
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade platformio
+
+    - name: Run PlatformIO
+      run: cd arduino/mds && make
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: AB-Transport_Arduino_Binaries
+        path: arduino/mds/.pio/build/megaatmega2560/firmware.*
+  
+  delint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cache pip
+      uses: actions/cache@v2
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Cache PlatformIO
+      uses: actions/cache@v2
+      with:
+        path: ~/.platformio
+        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+    - name: Set up Python
+      uses: actions/setup-python@v2
+    - name: Install PlatformIO
+      run: |
+        python -m pip install --upgrade pip
+        pip install --upgrade platformio
+
+    - name: Run Delinter
+      run: cd arduino/mds && pio check
+
   make_docs:
     runs-on: ubuntu-latest
     name: Doc Builder
@@ -53,36 +112,12 @@ jobs:
         name: MDS_Instruction_Manual
         path: docs/_build/latex/MDS_Operator_Manual.pdf
 
-  make_bin:
-    runs-on: ubuntu-latest
-    name: Binary Builder
-    steps:
-    - uses: actions/checkout@v2
-
-    - run: cd arduino/mds && make bin
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: AB-Transport_Arduino_Binaries
-        path: arduino/mds/_build/arduino.avr.mega/*
-  
-  make_lint:
-    runs-on: ubuntu-latest
-    name: c++ Delinter
-    steps:
-    - uses: actions/checkout@v2
-
-    - run: touch arduino/mds/README.md
-    - run: touch arduino/mds/COPYING
-
-    - run: cd arduino/mds && make lint
-
   publish_docs:
     # Only publish on tags
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     name: Create Brightspace Submission
-    needs: [make_docs, make_bin, make_instructions]
+    needs: [make_docs, make_firmware, make_instructions]
 
     steps:
     - uses: actions/download-artifact@v2
