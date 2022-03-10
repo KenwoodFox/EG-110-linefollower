@@ -5,3 +5,5 @@
  * pindefs and pin locations used in this
  * project.
  */
+
+#define STAR_MOTOR 2
