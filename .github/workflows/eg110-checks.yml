@@ -90,7 +90,7 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     name: Create Brightspace Submission
-    needs: [make_docs, make_bin, make_instructions]
+    needs: [make_docs, make_firmware, make_instructions]
 
     steps:
     - uses: actions/download-artifact@v2
