@@ -1,4 +1,13 @@
+/* EG-110
+ * SNHU, CETA
+ *
+ * The main component of our source code.
+ */
+
 #include "Arduino.h"
+
+// Custom libs
+#include "HUSKYLENS.h"
 
 void setup()
 {
