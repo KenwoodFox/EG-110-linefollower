@@ -84,7 +84,7 @@ jobs:
     if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     name: Create Brightspace Submission
-    needs: [make_docs, make_bin, make_instructions]
+    needs: [make_docs, make_instructions]
 
     steps:
     - uses: actions/download-artifact@v2
@@ -114,11 +114,3 @@ jobs:
         overwrite: true
         body: "A-B Transport EG-110, Automated with auto uploaded binaries."
         file_glob: true
-    
-    - name: Upload Binaries to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: 'arduino_binaries.zip'
-        tag: ${{ github.ref }}
-        overwrite: true
