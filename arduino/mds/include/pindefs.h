@@ -6,4 +6,17 @@
  * project.
  */
 
+#ifndef PINDEFS_H
+#define PINDEFS_H
+
+// Motors/actuators
 #define STAR_MOTOR 2
+
+// LEDs and Status
+
+// Buttons, Sensors and inputs
+
+// Serial/comm settings
+#define SERIAL_SPEED 115200
+
+#endif // PINDEFS_H
