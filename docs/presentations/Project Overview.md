@@ -131,17 +131,13 @@ Todo
 
 ## 3D Printing
 
-### 3D Printing the Chassis
-
-![](resources/3DPrinting.png){ height=50% }
+![](resources/3DPrinting.png){ height=60% }
 
 Us 3D printing our chassis
 
 ## 3D Printing
 
-### Assembly of 3D printed parts
-
-![](resources/prototype_assy.jpg){ height=50% }
+![](resources/prototype_assy.jpg){ height=60% }
 
 An early assembly of the prototype
 
@@ -201,18 +197,21 @@ Todo
 
 ## Lessons Learned
 
-Todo
+ - Huskylens library
+   - The library was clunky, and poorly maintained. We ended up submitting an issue or two and a pull request on their upstream repo.
+ - 3D printing is slow!
+   - In total, the 3D printer ran for **55 hours** and used **940** grams in total producing our final prototype, this took forever!
 
 
 # Questions
 
 ## Questions?
 
- - WHAT?
- - WHY
- - WHO
- - WHEN
- - WHERE
+ - What
+ - Why
+ - Who
+ - When
+ - Where
 
 
 # Backup Slides
