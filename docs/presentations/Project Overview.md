@@ -220,3 +220,12 @@ Todo
 
 Beep beep
 (Get it? im backing up)
+
+## How was this presentation made?
+
+This entire presentation was written in markdown, an industry standard for documentation.
+
+This allows us to write cleanly, with no formatting, and convert the result into any
+form of documentation we want, **epub**, **pdf**, **slideshow**, etc.
+
+![](resources/MakingThisPresentation.png){ height=40% }
