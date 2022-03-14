@@ -188,6 +188,37 @@ Each tiny change can be recorded and checked by other team members.
 
 :::
 
+## Software breakdown
+
+In the end we had a robust, easy to navigate software base.
+
+### Final Software breakdown
+
+![](resources/ProgrammingBreakdown.png){ height=10% }
+
+
+# Collaboration
+
+## Collaboration on Discord
+
+We mainly used discord to facilitate collaboration and as a central place to store photos and make notes.
+
+::: columns
+
+:::: {.column}
+
+![](resources/DiscordColab.png){ height=80% }
+
+::::
+
+:::: {.column}
+
+![](resources/ColabSure.png){ height=80% }
+
+::::
+
+:::
+
 
 # Conclusion
 
