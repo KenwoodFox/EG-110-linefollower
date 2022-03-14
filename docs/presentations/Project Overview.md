@@ -81,18 +81,21 @@ Aiden
 ## Key Design Requirements
 
 ### Functional
- - Transport as much as possible
- - Be as efficient as possible
- - Prioritize speed and reliability
- - Prioritize autonomy
+ - Transport as much as possible.
+   - Intentionally vague, strive to make every engineering choice to improve weight capacity.
+ - Be as efficient as possible.
+ - Prioritize speed and reliability.
+ - Prioritize autonomy.
 
 ### Physical Requirements
 
-Todo
+ - Have a sleek, __stackable__ profile. This means our unit should utilize a bounding box space and be as efficient
+in its use of standby space as possible.
 
 ### Performance Requirements
 
-Todo
+ - Transport at least 2.5lb for no less than 20m.
+ - Perform long distance autonomous routes and have a user operated cycle start/stop sequence.
 
 ## Concepts and Selection
 
@@ -108,7 +111,7 @@ Todo
 
 :::: {.column}
 
-### Concept 2
+### Huskylens
 
 Todo
 
@@ -133,6 +136,61 @@ Todo
 ![](resources/3DPrinting.png){ height=50% }
 
 Us 3D printing our chassis
+
+## 3D Printing
+
+### Assembly of 3D printed parts
+
+![](resources/prototype_assy.jpg){ height=50% }
+
+An early assembly of the prototype
+
+## Software
+
+Like hardware, software must be developed in a similar process, prototyping, testing, refining.
+
+::: columns
+
+:::: {.column}
+
+### Pull Requests
+
+![](resources/PullRequest.png){ height=60% }
+
+A pull request is a way to track a feature, and confirm it works before merging it in.
+
+::::
+
+:::: {.column}
+
+### Managing Diffs
+
+![](resources/TrackingChanges.png){ height=45% }
+
+Each tiny change can be recorded and checked by other team members.
+
+::::
+
+:::
+
+## Automatic Software checks
+
+::: columns
+
+:::: {.column}
+
+![](resources/AutomaticChecks.png){ height=80% }
+
+::::
+
+:::: {.column}
+
+ - By using CI/CD we can automatically check every team member's software contributing before even uploading changes to the arduino firmware.
+ - Artifacts can also be downloaded, including things like presentations, arduino **binaries** and other information.
+
+::::
+
+:::
 
 
 # Conclusion
