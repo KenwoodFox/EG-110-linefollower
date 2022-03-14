@@ -11,6 +11,7 @@
 
 // Motors/actuators
 #define STAR_MOTOR 2
+#define PORT_MOTOR 3
 
 // LEDs and Status
 

@@ -11,9 +11,9 @@
 
 // Custom libs
 #include "HUSKYLENS.h"
-#include "drivetrain.cpp"
+#include "drivetrain.h"
 
-const Drivetrain drivetrain = Drivetrain(0, 1);
+const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
 
 void setup()
 {
