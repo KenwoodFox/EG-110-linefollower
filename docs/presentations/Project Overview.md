@@ -196,6 +196,8 @@ In the end we had a robust, easy to navigate software base.
 
 ![](resources/ProgrammingBreakdown.png){ height=10% }
 
+![](resources/Dirtree.png){ height=50% }
+
 
 # Collaboration
 
