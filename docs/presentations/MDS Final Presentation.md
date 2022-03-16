@@ -1,6 +1,6 @@
 ---
 title:
- - A-B Transport Project Overview
+ - A-B Transport MDS Project Overview
 subtitle:
  - Version &hash
 author:
@@ -63,7 +63,7 @@ Joe
 
 :::: {.column width=20%}
 
-![](resources/team_members/aiden.jpg){ width=90 }  
+![](resources/team_members/aiden.gif){ width=90 }  
 Aiden
 
 ::::
