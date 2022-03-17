@@ -10,8 +10,8 @@
 #define PINDEFS_H
 
 // Motors/actuators
-#define STAR_MOTOR 2
-#define PORT_MOTOR 3
+#define STAR_MOTOR 4
+#define PORT_MOTOR 5
 
 // LEDs and Status
 

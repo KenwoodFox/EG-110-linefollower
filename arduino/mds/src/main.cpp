@@ -17,7 +17,11 @@
 // Objects/Components
 const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
 const HUSKYLENS huskylens;
+
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
+
+// Delete me
+float superI = 0;
 
 void printError(String _error)
 {
@@ -37,31 +41,37 @@ void setup()
     // Print MOTD
     Serial.println(MOTD);
 
-    // Setup huskylens (bleh)
-    while (!huskylens.begin(huskySerial))
-    {
-        // printError("Error starting huskylens, halting until complete.");
-        delay(RETRY_PAUSE);
-    }
+    // // Setup huskylens (bleh)
+    // while (!huskylens.begin(huskySerial))
+    // {
+    //     printError("Error starting huskylens, halting until complete.");
+    //     delay(RETRY_PAUSE);
+    // }
 }
 
 void loop()
 {
-    if (!huskylens.request())
-        Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));
-    else if (!huskylens.isLearned())
-        Serial.println(F("Nothing learned, press learn button on HUSKYLENS to learn one!"));
-    else if (!huskylens.available())
-        Serial.println(F("No block or arrow appears on the screen!"));
-    else
-    {
-        Serial.println(F("###########"));
-        while (huskylens.available())
-        {
-            HUSKYLENSResult result = huskylens.read();
-            printResult(result);
-        }
-    }
+    superI = superI + 0.01;
+
+    drivetrain.setChassisVector(int(sin(superI) * 255), 0);
+
+    delay(25); // Never do this!
+
+    // if (!huskylens.request())
+    //     Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));
+    // else if (!huskylens.isLearned())
+    //     Serial.println(F("Nothing learned, press learn button on HUSKYLENS to learn one!"));
+    // else if (!huskylens.available())
+    //     Serial.println(F("No block or arrow appears on the screen!"));
+    // else
+    // {
+    //     Serial.println(F("###########"));
+    //     while (huskylens.available())
+    //     {
+    //         HUSKYLENSResult result = huskylens.read();
+    //         printResult(result);
+    //     }
+    // }
 }
 
 void printResult(HUSKYLENSResult result)
