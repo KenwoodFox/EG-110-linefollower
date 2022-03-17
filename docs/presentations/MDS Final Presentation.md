@@ -274,6 +274,8 @@ We mainly used discord to facilitate collaboration and as a central place to sto
    - The huskylens performed worse, and was much harder to tune PID for, than a dedicated line following robot using IR and tape.
  - PID Tuning
    - The huskylens often performed erratically, and required a lot of PID filtering, the more filtering the PID has to do, the less **responsive** it is.
+ - Collaboration
+   - Our collaboration was present but very out of sync, it was hard to get every member on the same time schedule, this affected us a lot.
 
 
 # Questions
