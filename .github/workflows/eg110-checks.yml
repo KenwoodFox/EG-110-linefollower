@@ -1,116 +1,118 @@
 name: Style, Build and Docs
-on: 
+on:
   push:
-    branches:    
-     - 'main'
+    branches:
+      - "main"
     tags:
-      - '*'
+      - "*"
   pull_request:
 
 jobs:
   make_firmware:
     runs-on: ubuntu-latest
+    name: Firmware Builder
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Cache PlatformIO
-      uses: actions/cache@v2
-      with:
-        path: ~/.platformio
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-    - name: Set up Python
-      uses: actions/setup-python@v2
-    - name: Install PlatformIO
-      run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade platformio
+      - uses: actions/checkout@v2
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Cache PlatformIO
+        uses: actions/cache@v2
+        with:
+          path: ~/.platformio
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade platformio
 
-    - name: Run PlatformIO
-      run: cd arduino/mds && make
+      - name: Run PlatformIO
+        run: cd arduino/mds && make
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: AB-Transport_Arduino_Binaries
-        path: arduino/mds/.pio/build/megaatmega2560/firmware.*
-  
+      - uses: actions/upload-artifact@v2
+        with:
+          name: AB-Transport_Arduino_Binaries
+          path: arduino/mds/.pio/build/megaatmega2560/firmware.*
+
   delint:
     runs-on: ubuntu-latest
+    name: Delinter
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Cache PlatformIO
-      uses: actions/cache@v2
-      with:
-        path: ~/.platformio
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-    - name: Set up Python
-      uses: actions/setup-python@v2
-    - name: Install PlatformIO
-      run: |
-        python -m pip install --upgrade pip
-        pip install --upgrade platformio
+      - uses: actions/checkout@v2
+      - name: Cache pip
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Cache PlatformIO
+        uses: actions/cache@v2
+        with:
+          path: ~/.platformio
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Install PlatformIO
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade platformio
 
-    - name: Run Delinter
-      run: cd arduino/mds && pio check
+      - name: Run Delinter
+        run: cd arduino/mds && pio check
 
   make_docs:
     runs-on: ubuntu-latest
     name: Doc Builder
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
+      - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
 
-    - run: cd docs && make
+      - run: cd docs && make
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: AB_Docs
-        path: docs/_build/pdf/*.pdf
-  
+      - uses: actions/upload-artifact@v2
+        with:
+          name: AB_Docs
+          path: docs/_build/pdf/*.pdf
+
   make_instructions:
     runs-on: ubuntu-latest
     name: Instruction Builder
     steps:
-    - name: Setup Python
-      uses: actions/setup-python@v1
-      with:
-        python-version: 3.9
-        architecture: x64
-    
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v1
+        with:
+          python-version: 3.9
+          architecture: x64
 
-    - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    - name: Install requirements
-      run: pip install -r docs/requirements.txt
+      - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
 
-    - run: cd docs && make latexpdf
+      - name: Install requirements
+        run: pip install -r docs/requirements.txt
 
-    - run: mv docs/_build/latex/mobiledeliverysystem.pdf docs/_build/latex/MDS_Operator_Manual.pdf
+      - run: cd docs && make latexpdf
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: MDS_Instruction_Manual
-        path: docs/_build/latex/MDS_Operator_Manual.pdf
+      - run: mv docs/_build/latex/mobiledeliverysystem.pdf docs/_build/latex/MDS_Operator_Manual.pdf
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: MDS_Instruction_Manual
+          path: docs/_build/latex/MDS_Operator_Manual.pdf
 
   publish_docs:
     # Only publish on tags
@@ -120,38 +122,38 @@ jobs:
     needs: [make_docs, make_firmware, make_instructions]
 
     steps:
-    - uses: actions/download-artifact@v2
-      with:
-        name: AB_Docs
+      - uses: actions/download-artifact@v2
+        with:
+          name: AB_Docs
 
-    - uses: actions/download-artifact@v2
-      with:
-        name: AB-Transport_Arduino_Binaries
-        path: arduino_bin
-  
-    - uses: actions/download-artifact@v2
-      with:
-        name: MDS_Instruction_Manual
+      - uses: actions/download-artifact@v2
+        with:
+          name: AB-Transport_Arduino_Binaries
+          path: arduino_bin
 
-    - uses: papeloto/action-zip@v1
-      with:
-        files: arduino_bin/
-        dest: arduino_binaries.zip
+      - uses: actions/download-artifact@v2
+        with:
+          name: MDS_Instruction_Manual
 
-    - name: Upload Docs to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: '*.pdf'
-        tag: ${{ github.ref }}
-        overwrite: true
-        body: "A-B Transport EG-110, Automated with auto uploaded binaries."
-        file_glob: true
-    
-    - name: Upload Binaries to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: 'arduino_binaries.zip'
-        tag: ${{ github.ref }}
-        overwrite: true
+      - uses: papeloto/action-zip@v1
+        with:
+          files: arduino_bin/
+          dest: arduino_binaries.zip
+
+      - name: Upload Docs to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "*.pdf"
+          tag: ${{ github.ref }}
+          overwrite: true
+          body: "A-B Transport EG-110, Automated with auto uploaded binaries."
+          file_glob: true
+
+      - name: Upload Binaries to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "arduino_binaries.zip"
+          tag: ${{ github.ref }}
+          overwrite: true
