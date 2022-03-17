@@ -198,6 +198,30 @@ In the end we had a robust, easy to navigate software base.
 
 ![](resources/Dirtree.png){ height=50% }
 
+## Electronics
+
+We used several major electrical components such as a main breakout protoboard and proper ESCs.
+
+::: columns
+
+:::: {.column}
+
+### ESC
+
+![](resources/ESC.jpg){ height=80% }
+
+::::
+
+:::: {.column}
+
+### Protoboard
+
+![](resources/team_members/aiden.jpg){ height=80% }
+
+::::
+
+:::
+
 
 # Collaboration
 
@@ -234,6 +258,8 @@ Todo
    - The library was clunky, and poorly maintained. We ended up submitting an issue or two and a pull request on their upstream repo.
  - 3D printing is slow!
    - In total, the 3D printer ran for **55 hours** and used **940** grams in total producing our final prototype, this took forever!
+ - For this application, the huskylens performed **worse** than a properly tuned line tracker
+   - The huskylens performed worse, and was much harder to tune PID for, than a dedicated line following robot using IR and tape.
 
 
 # Questions
