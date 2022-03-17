@@ -18,7 +18,7 @@ ALL: build
 build:
 	pio run
 
-upload:
+flash:
 	pio run --target upload
 
 clean:

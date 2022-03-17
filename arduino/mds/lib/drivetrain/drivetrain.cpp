@@ -22,8 +22,7 @@ Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
     PortPWMPin = _PortPWMPin;
 
     // Construct ESCs
-    pinMode(9, OUTPUT);
-    StarboardESC.attach(9);
+    StarboardESC.attach(2);
     // PortESC.attach(PortPWMPin);
 };
 
@@ -36,5 +35,5 @@ void Drivetrain::setChassisVector(signed int speed, signed int rot)
     // StarboardESC.write(speed + rot);
     // PortESC.write(-speed - rot);
 
-    StarboardESC.write(speed);
+    StarboardESC.writeMicroseconds(1500);
 };
