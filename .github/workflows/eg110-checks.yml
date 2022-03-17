@@ -10,6 +10,7 @@ on:
 jobs:
   make_firmware:
     runs-on: ubuntu-latest
+    name: Firmware Builder
 
     steps:
     - uses: actions/checkout@v2
@@ -42,6 +43,7 @@ jobs:
   
   delint:
     runs-on: ubuntu-latest
+    name: Delinter
 
     steps:
     - uses: actions/checkout@v2
