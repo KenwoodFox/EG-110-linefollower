@@ -141,6 +141,13 @@ in its use of standby space as possible.
  - We machined brackets and misc parts
  - We combined motors and COTS gearbox components into larger components
 
+## Design
+
+We used FreeCAD to develop all of our mono-chassis components.
+
+![](resources/FullAssy.png){ height=60% }
+
+
 ## 3D Printing
 
 ![](resources/3DPrinting.png){ height=60% }
