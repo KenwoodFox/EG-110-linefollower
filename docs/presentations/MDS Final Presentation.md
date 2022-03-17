@@ -63,14 +63,26 @@ Joe
 
 :::: {.column width=20%}
 
-![](resources/team_members/aiden.gif){ width=90 }  
+![](resources/team_members/aiden.jpg){ width=90 }  
 Aiden
 
 ::::
 
 :::
 
-# Outline
+## Outline
+
+ - Project Statement
+ - Design Requirements
+ - Concepts and selection
+ - Fabrication
+ - Software
+ - Collaboration
+ - Conclusion
+ - Extras
+
+Use the top-bar at any time to see how far along we are!
+
 
 ## Project Statement
 
@@ -113,7 +125,7 @@ in its use of standby space as possible.
 
 ### Huskylens
 
-Todo
+![](resources/huskylens.jpg)
 
 ::::
 
@@ -216,7 +228,7 @@ We used several major electrical components such as a main breakout protoboard a
 
 ### Protoboard
 
-![](resources/team_members/aiden.jpg){ height=80% }
+![](resources/protoboard.jpg){ height=70% }
 
 ::::
 
@@ -250,7 +262,7 @@ We mainly used discord to facilitate collaboration and as a central place to sto
 
 ## Final Prototype
 
-Todo
+%resources/final_proto.mp4%
 
 ## Lessons Learned
 
@@ -260,6 +272,8 @@ Todo
    - In total, the 3D printer ran for **55 hours** and used **940** grams in total producing our final prototype, this took forever!
  - For this application, the huskylens performed **worse** than a properly tuned line tracker
    - The huskylens performed worse, and was much harder to tune PID for, than a dedicated line following robot using IR and tape.
+ - PID Tuning
+   - The huskylens often performed erratically, and required a lot of PID filtering, the more filtering the PID has to do, the less **responsive** it is.
 
 
 # Questions
