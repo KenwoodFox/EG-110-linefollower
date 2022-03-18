@@ -13,7 +13,7 @@
 #include "HUSKYLENS.h"
 #include "SoftwareSerial.h"
 #include "drivetrain.h"
-#include "PPMEncoder.h"
+#include "Servo.h"
 
 // Objects/Components
 // const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
@@ -21,8 +21,11 @@ const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
 
+Servo myservo;
+
 // Delete me
 float superI = 0;
+int val;
 
 void printError(String _error)
 {
@@ -49,19 +52,17 @@ void setup()
     //     delay(RETRY_PAUSE);
     // }
 
-    ppmEncoder.begin(2);
-
-    ppmEncoder.setChannelPercent(0, 0);
-
-    delay(1000);
+    myservo.attach(2);
 }
 
 void loop()
 {
     superI = superI + 0.001;
 
-    Serial.println(int(sin(superI) * 100));
-    ppmEncoder.setChannelPercent(0, int(sin(superI) * 100));
+    val = int(sin(superI) * 180);
+
+    Serial.println(val);
+    myservo.write(val);
 
     delay(25); // Never do this!
 
