@@ -24,6 +24,9 @@ flash:
 clean:
 	pio run --target clean
 
+lint:
+	pio check
+
 test:
 	pio test --upload-port $(SERIAL_DEV)
 
