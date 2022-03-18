@@ -10,7 +10,7 @@
 #include "Servo.h"
 
 Servo StarboardESC;
-// Servo PortESC;
+Servo PortESC;
 
 Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
 {
@@ -23,7 +23,7 @@ Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
 
     // Construct ESCs
     StarboardESC.attach(2);
-    // PortESC.attach(PortPWMPin);
+    PortESC.attach(3);
 };
 
 void Drivetrain::setChassisVector(signed int speed, signed int rot)
@@ -32,8 +32,8 @@ void Drivetrain::setChassisVector(signed int speed, signed int rot)
      * directing the chassis.
      */
 
-    // StarboardESC.write(speed + rot);
-    // PortESC.write(-speed - rot);
+    speed = map(speed, -128, 128, 1100, 1800);
 
     StarboardESC.writeMicroseconds(1500);
+    PortESC.writeMicroseconds(1500);
 };

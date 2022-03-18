@@ -16,15 +16,11 @@
 #include "Servo.h"
 
 // Objects/Components
-// const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
+const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
 const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
 
-Servo myservo;
-
-// Delete me
-float superI = 0;
 int val;
 
 void printError(String _error)
@@ -52,22 +48,16 @@ void setup()
     //     delay(RETRY_PAUSE);
     // }
 
-    myservo.attach(2);
     pinMode(3, INPUT);
 }
 
 void loop()
 {
-    // superI = superI + 0.0001;
-
-    // val = int(sin(superI) * 180);
-
-    // val = map(val, -180, 180, 45, 135);
-    // val = map(val, -180, 180, 1100, 1900);
-
     val = pulseIn(3, HIGH);
 
-    myservo.writeMicroseconds(val);
+    val = map(val, 1100, 1800, -128, 128);
+
+    drivetrain.setChassisVector(val, 0);
 
     // if (!huskylens.request())
     //     Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));
