@@ -4,6 +4,7 @@
  * The main component of our source code.
  */
 
+// Arduino
 #include "Arduino.h"
 
 // Settings/config
@@ -12,11 +13,15 @@
 // Libs
 #include "HUSKYLENS.h"
 #include "SoftwareSerial.h"
-#include "drivetrain.h"
 #include "Servo.h"
+
+// Custom libs
+#include "drivetrain.h"
+#include "operator.h"
 
 // Objects/Components
 const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
+const Operator humanOperator = Operator();
 const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);

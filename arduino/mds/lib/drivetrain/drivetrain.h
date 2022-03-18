@@ -11,5 +11,5 @@ private:
 public:
     Drivetrain(int _StarboardPWMPin, int _PortPWMPin);
 
-    void setChassisVector(signed int speed, signed int rot);
+    void setChassisVector(signed int speed, signed int rot) const;
 };

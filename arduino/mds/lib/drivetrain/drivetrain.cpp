@@ -26,7 +26,7 @@ Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
     PortESC.attach(3);
 };
 
-void Drivetrain::setChassisVector(signed int speed, signed int rot)
+void Drivetrain::setChassisVector(signed int speed, signed int rot) const
 {
     /* Sets the current vector
      * directing the chassis.
