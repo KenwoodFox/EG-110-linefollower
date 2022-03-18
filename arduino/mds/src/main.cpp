@@ -53,18 +53,21 @@ void setup()
     // }
 
     myservo.attach(2);
+    pinMode(3, INPUT);
 }
 
 void loop()
 {
-    superI = superI + 0.001;
+    // superI = superI + 0.0001;
 
-    val = int(sin(superI) * 180);
+    // val = int(sin(superI) * 180);
 
-    Serial.println(val);
-    myservo.write(val);
+    // val = map(val, -180, 180, 45, 135);
+    // val = map(val, -180, 180, 1100, 1900);
 
-    delay(25); // Never do this!
+    val = pulseIn(3, HIGH);
+
+    myservo.writeMicroseconds(val);
 
     // if (!huskylens.request())
     //     Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));
