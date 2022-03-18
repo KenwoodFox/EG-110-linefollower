@@ -29,5 +29,5 @@ test:
 
 # Monitor the serial (debug) output.
 # Requires minicom
-monitor: upload
+monitor: flash
 	minicom -c on -D $(SERIAL_DEV) -b 115200

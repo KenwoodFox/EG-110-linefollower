@@ -13,9 +13,10 @@
 #include "HUSKYLENS.h"
 #include "SoftwareSerial.h"
 #include "drivetrain.h"
+#include "PPMEncoder.h"
 
 // Objects/Components
-const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
+// const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
 const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
@@ -47,13 +48,20 @@ void setup()
     //     printError("Error starting huskylens, halting until complete.");
     //     delay(RETRY_PAUSE);
     // }
+
+    ppmEncoder.begin(2);
+
+    ppmEncoder.setChannelPercent(0, 0);
+
+    delay(1000);
 }
 
 void loop()
 {
-    superI = superI + 0.01;
+    superI = superI + 0.001;
 
-    drivetrain.setChassisVector(int(sin(superI) * 255), 0);
+    Serial.println(int(sin(superI) * 100));
+    ppmEncoder.setChannelPercent(0, int(sin(superI) * 100));
 
     delay(25); // Never do this!
 
