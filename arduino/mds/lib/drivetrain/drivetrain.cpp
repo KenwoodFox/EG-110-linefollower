@@ -7,16 +7,27 @@
 #include "Arduino.h"
 
 // Libs
-#include "PPMEncoder.h"
+#include "Servo.h"
 
-Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin){
+Servo StarboardESC;
+// Servo PortESC;
+
+Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
+{
     /* Constructs a drivetrain
      */
 
-    // ppmEncoder.begin(2);
+    // Get pins
+    StarboardPWMPin = _StarboardPWMPin;
+    PortPWMPin = _PortPWMPin;
+
+    // Construct ESCs
+    StarboardESC.attach(2);
+    // PortESC.attach(PortPWMPin);
 };
 
-void Drivetrain::setChassisVector(signed int speed, signed int rot){
+void Drivetrain::setChassisVector(signed int speed, signed int rot)
+{
     /* Sets the current vector
      * directing the chassis.
      */
@@ -24,5 +35,5 @@ void Drivetrain::setChassisVector(signed int speed, signed int rot){
     // StarboardESC.write(speed + rot);
     // PortESC.write(-speed - rot);
 
-    // ppmEncoder.setChannelPercent(0, speed);
+    StarboardESC.writeMicroseconds(1500);
 };
