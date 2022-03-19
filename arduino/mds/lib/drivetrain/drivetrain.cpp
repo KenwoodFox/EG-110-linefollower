@@ -9,21 +9,21 @@
 // Libs
 #include "Servo.h"
 
-Servo StarboardESC;
-Servo PortESC;
+Servo starboardESC;
+Servo portESC;
 
-Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
+Drivetrain::Drivetrain(int _starboardPWMPin, int _portPWMPin)
 {
     /* Constructs a drivetrain
      */
 
     // Get pins
-    StarboardPWMPin = _StarboardPWMPin;
-    PortPWMPin = _PortPWMPin;
+    starboardPWMPin = _starboardPWMPin;
+    portPWMPin = _portPWMPin;
 
     // Construct ESCs
-    StarboardESC.attach(2);
-    PortESC.attach(3);
+    starboardESC.attach(2);
+    portESC.attach(3);
 };
 
 void Drivetrain::setChassisVector(signed int speed, signed int rot) const
@@ -34,6 +34,6 @@ void Drivetrain::setChassisVector(signed int speed, signed int rot) const
 
     speed = map(speed, -128, 128, 1100, 1800);
 
-    StarboardESC.writeMicroseconds(1500);
-    PortESC.writeMicroseconds(1500);
+    starboardESC.writeMicroseconds(1500);
+    portESC.writeMicroseconds(1500);
 };

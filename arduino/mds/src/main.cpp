@@ -7,8 +7,9 @@
 // Arduino
 #include "Arduino.h"
 
-// Settings/config
+// Consts/Pins
 #include "pindefs.h"
+#include "consts.h"
 
 // Libs
 #include "HUSKYLENS.h"
@@ -21,7 +22,7 @@
 
 // Objects/Components
 const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
-const Operator humanOperator = Operator();
+const Operator humanOperator = Operator(2, 3, 4);
 const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
