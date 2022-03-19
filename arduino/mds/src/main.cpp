@@ -22,7 +22,7 @@
 
 // Objects/Components
 const Drivetrain drivetrain = Drivetrain(STAR_MOTOR, PORT_MOTOR);
-const Operator humanOperator = Operator(2, 3, 4);
+const Operator humanOperator = Operator(THROTTLEPIN, STEERPIN, AUTONOMOUSPIN);
 const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
@@ -59,11 +59,15 @@ void setup()
 
 void loop()
 {
-    val = pulseIn(3, HIGH);
+    // val = pulseIn(3, HIGH);
 
-    val = map(val, 1100, 1800, -128, 128);
+    // val = map(val, 1100, 1800, -128, 128);
 
-    drivetrain.setChassisVector(val, 0);
+    // drivetrain.setChassisVector(val, 0);
+
+    Serial.println(humanOperator.getThrottle());
+    delay(100);
+    // Serial.println(pulseIn(52, HIGH));
 
     // if (!huskylens.request())
     //     Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));

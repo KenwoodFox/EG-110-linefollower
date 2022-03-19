@@ -3,8 +3,9 @@
 #include <Arduino.h>
 #include <unity.h>
 
-// Include headers
+// Consts/Pins
 #include "pindefs.h"
+#include "consts.h"
 
 // void setUp(void) {
 // // set stuff up here
@@ -14,9 +15,10 @@
 // // clean stuff up here
 // }
 
-void test_led_builtin_pin_number(void)
+void test_spektrum(void)
 {
-    TEST_ASSERT_EQUAL(2, STAR_MOTOR);
+    // Test all pins
+    TEST_ASSERT_TRUE(pulseIn(THROTTLEPIN, HIGH) < 2000);
 }
 
 void setup()
@@ -25,7 +27,7 @@ void setup()
     delay(2000);
 
     UNITY_BEGIN(); // IMPORTANT
-    RUN_TEST(test_led_builtin_pin_number);
+    RUN_TEST(test_spektrum);
 
     pinMode(LED_BUILTIN, OUTPUT);
 }

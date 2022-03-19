@@ -6,6 +6,9 @@
 #include "operator.h"
 #include "Arduino.h"
 
+// Memory
+int _ret;
+
 Operator::Operator(int _throttlePin, int _steerPin, int _autonomousPin, int _recvMin, int _recvMax)
 {
     /* Constructs an operator
@@ -26,7 +29,7 @@ Operator::Operator(int _throttlePin, int _steerPin, int _autonomousPin, int _rec
 
 bool Operator::getManualOverride() const
 {
-    int _ret = pulseIn(throttlePin, HIGH);
+    _ret = pulseIn(autonomousPin, HIGH);
 
     if (_ret > 1500)
     {
@@ -41,10 +44,10 @@ bool Operator::getManualOverride() const
 int Operator::getThrottle() const
 {
     // Note: this is a bad way to do this, it halts the CPU, a better way would be to use interrupts.
-    int _ret = pulseIn(throttlePin, HIGH);
+    _ret = pulseIn(50, HIGH);
 
     // Map ret between -128 and 128
-    _ret = map(_ret, recvMin, recvMax, -128, 128);
+    //_ret = map(_ret, recvMin, recvMax, -128, 128);
 
     return _ret;
 };
@@ -52,7 +55,7 @@ int Operator::getThrottle() const
 int Operator::getSteer() const
 {
     // Note: this is a bad way to do this, it halts the CPU, a better way would be to use interrupts.
-    int _ret = pulseIn(steerPin, HIGH);
+    _ret = pulseIn(steerPin, HIGH);
 
     // Map ret between -128 and 128
     _ret = map(_ret, recvMin, recvMax, -128, 128);
