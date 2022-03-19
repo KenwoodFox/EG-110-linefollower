@@ -6,9 +6,19 @@
 #include "operator.h"
 #include "Arduino.h"
 
-Operator::Operator(int _throttlePin, int _steerPin, int _autonomousPin){
+Operator::Operator(int _throttlePin, int _steerPin, int _autonomousPin, int _recvMin, int _recvMax)
+{
     /* Constructs an operator
      */
+
+    // Pins
+    throttlePin = _throttlePin;
+    steerPin = _steerPin;
+    autonomousPin = _autonomousPin;
+
+    // PWM values
+    recvMin = _recvMin;
+    recvMax = _recvMax;
 };
 
 bool Operator::getManualOverride() const

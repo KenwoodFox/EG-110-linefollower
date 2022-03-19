@@ -5,12 +5,14 @@
 class Operator
 {
 private:
-    int _throttlePin;
-    int _steerPin;
-    int _autonomousPin;
+    int throttlePin;
+    int steerPin;
+    int autonomousPin;
+    int recvMin;
+    int recvMax;
 
 public:
-    Operator(int _throttlePin, int _steerPin, int _autonomousPin);
+    Operator(int _throttlePin, int _steerPin, int _autonomousPin, int _recvMin, int _recvMax);
 
     bool getManualOverride() const;
     int getThrottle() const;
