@@ -65,8 +65,7 @@ void loop()
 
     // drivetrain.setChassisVector(val, 0);
 
-    Serial.println(humanOperator.getThrottle());
-    delay(100);
+    drivetrain.setChassisOverride(humanOperator.getThrottle(), 1500);
     // Serial.println(pulseIn(52, HIGH));
 
     // if (!huskylens.request())

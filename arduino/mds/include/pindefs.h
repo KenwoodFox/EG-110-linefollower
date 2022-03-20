@@ -16,8 +16,8 @@
 // LEDs and Status
 
 // Buttons, Sensors and inputs
-#define THROTTLEPIN 52
+#define THROTTLEPIN 50
 #define STEERPIN 51
-#define AUTONOMOUSPIN 50
+#define AUTONOMOUSPIN 52
 
 #endif // PINDEFS_H

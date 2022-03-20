@@ -44,7 +44,7 @@ bool Operator::getManualOverride() const
 int Operator::getThrottle() const
 {
     // Note: this is a bad way to do this, it halts the CPU, a better way would be to use interrupts.
-    _ret = pulseIn(50, HIGH);
+    _ret = pulseIn(throttlePin, HIGH);
 
     // Map ret between -128 and 128
     //_ret = map(_ret, recvMin, recvMax, -128, 128);
@@ -58,7 +58,7 @@ int Operator::getSteer() const
     _ret = pulseIn(steerPin, HIGH);
 
     // Map ret between -128 and 128
-    _ret = map(_ret, recvMin, recvMax, -128, 128);
+    //_ret = map(_ret, recvMin, recvMax, -128, 128);
 
     return _ret;
 };

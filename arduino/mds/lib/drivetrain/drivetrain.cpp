@@ -37,3 +37,14 @@ void Drivetrain::setChassisVector(signed int speed, signed int rot) const
     starboardESC.writeMicroseconds(1500);
     portESC.writeMicroseconds(1500);
 };
+
+void Drivetrain::setChassisOverride(signed int speed, signed int rot) const
+{
+    /* Sets the current pwm
+     * width override for the drivetrain
+     */
+
+    starboardESC.writeMicroseconds(speed);
+    portESC.writeMicroseconds(speed);
+};
+
