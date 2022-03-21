@@ -27,8 +27,6 @@ const HUSKYLENS huskylens;
 
 SoftwareSerial huskySerial(HUSKY_RX, HUSKY_TX);
 
-int val;
-
 void printError(String _error)
 {
     Serial.print("\x1B[31mi^2c Error: ");
@@ -47,6 +45,9 @@ void setup()
     // Print MOTD
     Serial.println(MOTD);
 
+    // Setup modules
+    drivetrain.begin();
+
     // // Setup huskylens (bleh)
     // while (!huskylens.begin(huskySerial))
     // {
@@ -54,7 +55,7 @@ void setup()
     //     delay(RETRY_PAUSE);
     // }
 
-    pinMode(3, INPUT);
+    // starboardESC.attach(3);
 }
 
 void loop()
@@ -65,8 +66,13 @@ void loop()
 
     // drivetrain.setChassisVector(val, 0);
 
-    drivetrain.setChassisOverride(humanOperator.getThrottle(), 1500);
-    // Serial.println(pulseIn(52, HIGH));
+    int val = humanOperator.getThrottle();
+
+    // Serial.println(val);
+    //  starboardESC.writeMicroseconds(val);
+
+    drivetrain.setChassisOverride(val, 1500);
+    //  Serial.println(pulseIn(52, HIGH));
 
     // if (!huskylens.request())
     //     Serial.println(F("Fail to request data from HUSKYLENS, recheck the connection!"));

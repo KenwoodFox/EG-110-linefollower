@@ -20,11 +20,14 @@ Drivetrain::Drivetrain(int _starboardPWMPin, int _portPWMPin)
     // Get pins
     starboardPWMPin = _starboardPWMPin;
     portPWMPin = _portPWMPin;
-
-    // Construct ESCs
-    starboardESC.attach(2);
-    portESC.attach(3);
 };
+
+void Drivetrain::begin()
+{
+    // Construct ESCs
+    starboardESC.attach(starboardPWMPin);
+    portESC.attach(portPWMPin);
+}
 
 void Drivetrain::setChassisVector(signed int speed, signed int rot) const
 {
@@ -38,13 +41,14 @@ void Drivetrain::setChassisVector(signed int speed, signed int rot) const
     portESC.writeMicroseconds(1500);
 };
 
-void Drivetrain::setChassisOverride(signed int speed, signed int rot) const
+void Drivetrain::setChassisOverride(int speed, int rot) const
 {
     /* Sets the current pwm
      * width override for the drivetrain
      */
+    Serial.println(starboardPWMPin);
+    Serial.println(speed);
 
     starboardESC.writeMicroseconds(speed);
     portESC.writeMicroseconds(speed);
 };
-
