@@ -64,14 +64,7 @@ void loop()
 
     // val = map(val, 1100, 1800, -128, 128);
 
-    // drivetrain.setChassisVector(val, 0);
-
-    int val = humanOperator.getThrottle();
-
-    // Serial.println(val);
-    //  starboardESC.writeMicroseconds(val);
-
-    drivetrain.setChassisOverride(val, 1500);
+    drivetrain.setChassisOverride(humanOperator.getThrottle(), humanOperator.getSteer());
     //  Serial.println(pulseIn(52, HIGH));
 
     // if (!huskylens.request())

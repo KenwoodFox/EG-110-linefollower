@@ -49,6 +49,6 @@ void Drivetrain::setChassisOverride(int speed, int rot) const
     Serial.println(starboardPWMPin);
     Serial.println(speed);
 
-    starboardESC.writeMicroseconds(speed);
-    portESC.writeMicroseconds(speed);
+    starboardESC.writeMicroseconds(speed + (rot - 1500));
+    portESC.writeMicroseconds(speed - (rot - 1500));
 };
