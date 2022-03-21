@@ -24,10 +24,13 @@ flash:
 clean:
 	pio run --target clean
 
+lint:
+	pio check
+
 test:
 	pio test --upload-port $(SERIAL_DEV)
 
 # Monitor the serial (debug) output.
 # Requires minicom
-monitor: upload
+monitor: flash
 	minicom -c on -D $(SERIAL_DEV) -b 115200

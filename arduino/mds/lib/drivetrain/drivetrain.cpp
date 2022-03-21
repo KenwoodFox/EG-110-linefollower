@@ -9,31 +9,46 @@
 // Libs
 #include "Servo.h"
 
-Servo StarboardESC;
-// Servo PortESC;
+Servo starboardESC;
+Servo portESC;
 
-Drivetrain::Drivetrain(int _StarboardPWMPin, int _PortPWMPin)
+Drivetrain::Drivetrain(int _starboardPWMPin, int _portPWMPin)
 {
     /* Constructs a drivetrain
      */
 
     // Get pins
-    StarboardPWMPin = _StarboardPWMPin;
-    PortPWMPin = _PortPWMPin;
-
-    // Construct ESCs
-    StarboardESC.attach(2);
-    // PortESC.attach(PortPWMPin);
+    starboardPWMPin = _starboardPWMPin;
+    portPWMPin = _portPWMPin;
 };
 
-void Drivetrain::setChassisVector(signed int speed, signed int rot)
+void Drivetrain::begin()
+{
+    // Construct ESCs
+    starboardESC.attach(starboardPWMPin);
+    portESC.attach(portPWMPin);
+}
+
+void Drivetrain::setChassisVector(signed int speed, signed int rot) const
 {
     /* Sets the current vector
      * directing the chassis.
      */
 
-    // StarboardESC.write(speed + rot);
-    // PortESC.write(-speed - rot);
+    speed = map(speed, -128, 128, 1100, 1800);
 
-    StarboardESC.writeMicroseconds(1500);
+    starboardESC.writeMicroseconds(1500);
+    portESC.writeMicroseconds(1500);
+};
+
+void Drivetrain::setChassisOverride(int speed, int rot) const
+{
+    /* Sets the current pwm
+     * width override for the drivetrain
+     */
+    Serial.println(starboardPWMPin);
+    Serial.println(speed);
+
+    starboardESC.writeMicroseconds(speed + (rot - 1500));
+    portESC.writeMicroseconds(speed - (rot - 1500));
 };

@@ -5,11 +5,13 @@
 class Drivetrain
 {
 private:
-    int StarboardPWMPin;
-    int PortPWMPin;
+    int starboardPWMPin;
+    int portPWMPin;
 
 public:
-    Drivetrain(int _StarboardPWMPin, int _PortPWMPin);
+    Drivetrain(int _starboardPWMPin, int _portPWMPin);
 
-    void setChassisVector(signed int speed, signed int rot);
+    void begin();
+    void setChassisVector(signed int speed, signed int rot) const;
+    void setChassisOverride(signed int speed, signed int rot) const;
 };

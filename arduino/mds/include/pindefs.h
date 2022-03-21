@@ -10,20 +10,14 @@
 #define PINDEFS_H
 
 // Motors/actuators
-#define STAR_MOTOR 4
+#define STAR_MOTOR 3
 #define PORT_MOTOR 5
 
 // LEDs and Status
 
 // Buttons, Sensors and inputs
-
-// Serial/comm settings
-#define DEV_SERIAL_SPEED 115200
-#define HUSKY_SERIAL_SEED 9600
-#define HUSKY_TX 10
-#define HUSKY_RX 11
-
-// Misc
-#define RETRY_PAUSE 100
+#define THROTTLEPIN 50
+#define STEERPIN 51
+#define AUTONOMOUSPIN 52
 
 #endif // PINDEFS_H
